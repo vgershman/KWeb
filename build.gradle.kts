@@ -25,9 +25,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
     implementation(npm("formik","2.0.4"))
     implementation(npm("bootstrap",""))
-    implementation(npm("react-google-recaptcha","2.1.0"))
-    implementation(npm("react-google-recaptcha-v3","1.10.1"))
+    //implementation(npm("react-google-recaptcha","2.1.0"))
+    //implementation(npm("react-google-recaptcha-v3","1.10.1"))
 
+    implementation(npm("react-simple-captcha", "9.0.1"))
+    implementation(npm("buffer", "6.0.3"))
 
 
 

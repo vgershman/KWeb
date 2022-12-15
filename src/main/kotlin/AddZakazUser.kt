@@ -1,12 +1,8 @@
 import csstype.ClassName
-import csstype.HtmlAttributes
+import csstype.px
 import data.Manager
-import data.Zakaz
 import emotion.react.css
-import kotlinx.browser.window
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
-import org.w3c.dom.get
 import react.FC
 import react.Props
 import react.dom.html.InputType
@@ -16,10 +12,8 @@ import react.dom.html.ReactHTML.h1
 import react.dom.html.ReactHTML.h3
 import react.dom.html.ReactHTML.input
 import react.dom.html.ReactHTML.ul
+import react.useEffectOnce
 import react.useState
-import csstype.px
-import RecapProps
-import Recap
 
 class NewZakazProps : Props {
     var fullname: String = ""
@@ -27,12 +21,10 @@ class NewZakazProps : Props {
 
     var name: String? = ""
     var comment: String? = ""
+    var error: Boolean = false
 }
 
 
-class MessageProps : Props {
-    var message: String = ""
-}
 
 
 
@@ -41,13 +33,18 @@ val AddZakazUser = FC<NewZakazProps> { props ->
     var phone by useState(props.phone)
     var name1 by useState(props.name)
     var comment by useState(props.comment)
+    var error by useState(props.error)
+
 
 
     var tgSent: Boolean by useState(false)
-    Recap{
-        reCaptchaKey = "6LfUwYAjAAAAAKzu4zDQcR5pLRo7knkUc0YKzj93"
 
-       ul { css{ paddingLeft = 40.px}
+    useEffectOnce {
+        loadCaptchaEngine(2)
+    }
+
+    ul {
+        css { paddingLeft = 40.px }
         h1 {
             +"  Оставьте заявку"
         }
@@ -101,41 +98,58 @@ val AddZakazUser = FC<NewZakazProps> { props ->
                 }
 
 
-                if(!tgSent) {
+                if (!tgSent) {
+
+                    Recap {
+
+                    }
+
                     button {
                         +"Отправить"
                         className = ClassName("btn btn-primary")
                         onClick = {
-                            mainScope.launch {
-                                tgSent = Manager.SentTg("$fullname $phone $name1 $comment")
-                                console.log(tgSent.toString())
-                                if (tgSent) {
-                                    name1 = ""
-                                    comment = ""
-                                    fullname = ""
-                                    phone = ""
 
+                            if(validateCaptcha(comment.orEmpty())) {
+
+                                mainScope.launch {
+                                    tgSent = Manager.SentTg("$fullname $phone $name1 $comment")
+                                    console.log(tgSent.toString())
+                                    if (tgSent) {
+                                        name1 = ""
+                                        comment = ""
+                                        fullname = ""
+                                        phone = ""
+
+                                    }
                                 }
+                            }else{
+                                error = true
                             }
 
                         }
                     }
                 }
-                if(tgSent){
+
+                if(error){
                     h3{
+                        +"Пошел нахуй!"
+                    }
+                }
+
+                if (tgSent) {
+                    h3 {
                         +"Заявка принята!"
                     }
                 }
 
                 div {
                     //Recap {
-                  //  }
+                    //  }
                 }
             }
-            }
         }
-
     }
+
 }
 
 //    <div className="App">

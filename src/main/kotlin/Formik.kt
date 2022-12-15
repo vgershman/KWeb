@@ -1,21 +1,21 @@
-@file:JsModule("react-google-recaptcha-v3")
+@file:JsModule("react-simple-captcha")
 
 @file:JsNonModule
 
-import org.w3c.dom.HTMLDivElement
 import react.*
-import react.dom.events.EventHandler
-import react.dom.events.FormEventHandler
 
-@JsName("GoogleReCaptchaProvider")
+@JsName("loadCaptchaEnginge")
+external val loadCaptchaEngine : SomeHzFunction
+
+@JsName("validateCaptcha")
+external val validateCaptcha : ValidateFunction
+
+@JsName("LoadCanvasTemplate")
 external val Recap: ComponentClass<RecapProps>
 
 
-external interface RecapProps : PropsWithClassName{
-    var reCaptchaKey : String
-//    var onChange: dynamic
-//    var onErrored : ()->Unit
 
 
-
+external interface RecapProps : PropsWithClassName {
+    //var onVerify: (token: String) -> Unit
 }
