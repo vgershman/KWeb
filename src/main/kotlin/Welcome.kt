@@ -25,7 +25,7 @@ val Welcome = FC<WelcomeProps> { props ->
 
     useEffectOnce {
         mainScope.launch {
-            orders = Manager.fetchOrders()
+            orders = Manager.fetchOrders("8917222250")
         }
     }
 
@@ -37,7 +37,7 @@ val Welcome = FC<WelcomeProps> { props ->
 
             li {
                 img {
-                    src = "11.jpg"
+                    src = "11.png"
                     alt = "ХЗХЗ"
                     className = ClassName("project__img")
                 }

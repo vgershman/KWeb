@@ -1,5 +1,6 @@
 package data
 
+import kotlinx.js.Void
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -18,4 +19,9 @@ data class Zakaz(
 data class ZakazItem(
     val id: Int? = null, val name: String? = null, val serial: String? = null, val price: Int? = null,
     val comment: String? = null
+)
+
+@Serializable
+data class TgResponce(
+    val ok: Boolean
 )
