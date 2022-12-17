@@ -42,77 +42,77 @@ val Login = FC<LoginProps> { props ->
 //    var name1 by useState(props.name)
 //    var comment by useState(props.comment)
 
-
-    div {
+    if (!good) {
         div {
-            className = ClassName("Auth-form-container")
-            form {
-                className = ClassName("Auth-form")
-                div {
-                    className = ClassName("Auth-form-content")
-                    h3 {
-                        className = ClassName("Auth-form-title")
-                        +"Вход сотрудника"
-                    }
+            div {
+                className = ClassName("Auth-form-container")
+                form {
+                    className = ClassName("Auth-form")
                     div {
-                        className = ClassName("form-group mt-3")
-                        label {
-                            +"Имя:"
+                        className = ClassName("Auth-form-content")
+                        h3 {
+                            className = ClassName("Auth-form-title")
+                            +"Вход сотрудника"
                         }
-                        input {
-                            type = InputType.email
-                            placeholder = "Ввведите имя"
-                            className = ClassName("form-control mt-1")
-                        }
-                    }
-                    div {
-                        className = ClassName("form-group mt-3")
-                        label {
-                            +"Пароль:"
-                        }
-                        input {
-                            type = InputType.password
-                            placeholder = "Пароль"
-                            className = ClassName("form-control mt-1")
-                            onChange = { event ->
-                                password = event.target.value
+                        div {
+                            className = ClassName("form-group mt-3")
+                            label {
+                                +"Имя:"
                             }
-                            value = props.password
+                            input {
+                                type = InputType.email
+                                placeholder = "Ввведите имя"
+                                className = ClassName("form-control mt-1")
+                            }
                         }
-                    }
-                    div {
-                        className = ClassName("d-grid gap-2 mt-3")
-                        button {
-                            type = ButtonType.submit
-                            onClick = {
-                                //mainScope.launch {
-                                    if (password == "123") {
-                                        good = true
+                        div {
+                            className = ClassName("form-group mt-3")
+                            label {
+                                +"Пароль:"
+                            }
+                            input {
+                                type = InputType.password
+                                placeholder = "Пароль"
+                                className = ClassName("form-control mt-1")
+                                onChange = { event ->
+                                    password = event.target.value
+                                }
+                                value = props.password
+                            }
+                        }
+                        div {
+                            className = ClassName("d-grid gap-2 mt-3")
+                            button {
+                                type = ButtonType.submit
+                                onClick = {
+                                    mainScope.launch {
+                                        if (password == "123") {
+                                            good = true
+                                        }
                                     }
-                               // }
+
+                                }
+                                className = ClassName("btn btn-primary")
+                                +"Вход"
 
                             }
-                            className = ClassName("btn btn-primary")
-                            +"Вход"
 
                         }
-
                     }
+
+
                 }
-
-
             }
-        }
-
-        if (good) {
-
-
-
-              AddZakazAdmin()
 
         }
+    }else{
+
+
+
+
+        AddZakazAdmin()
+
     }
-
 }
 
 
