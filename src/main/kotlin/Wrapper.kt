@@ -33,7 +33,6 @@ div{
         Routes{
             Route{
                 path= "/"
-
                 element = Welcome.create()
             }
             Route{
