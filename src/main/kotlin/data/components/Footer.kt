@@ -21,25 +21,83 @@ val Footer = VFC {
 
                 ul{
                     className = ClassName("social")
-
                     li{
-                        className = ClassName("social__item")
+                        className = ClassName("social-item")
                         a{
 
-                            href="http://vk.com"
+                            href="https://vk.com/3bservice"
                             img{
-                                src="instagram.svg"
+                                src="vk.png"
                                 alt="Link"
                             }}}
-li{
-                            a{
+                    li{
+                        className = ClassName("social-item")
+                        a{
 
-                                href="http://vk.com"
-                                img{
-                                    src="instagram.svg"
-                                    alt="Link"
-                                }}
-                        }
+                            href="https://wa.me/+79270393965"
+                            img{
+                                src="whatsapp.png"
+                                alt="Link"
+                            }}}
+                    li{
+                        className = ClassName("social-item")
+                        a{
+
+                            href="https://t.me/TBService_bot"
+                            img{
+                                src="telegram.png"
+                                alt="Link"
+                            }}}
+
+
+                    li{
+                        className = ClassName("social-item")
+                        a{
+
+                            href="https://www.instagram.com/3bservice/"
+                            img{
+                                src="instagram.png"
+                                alt="Link"
+                            }}}
+                    li{ className = ClassName("social-item")
+                        a{
+
+                            href="https://3b-s.ru/"
+                            img{
+                                src="www.png"
+                                alt="Link"
+                            }}
+                    }
+
+                    li{ className = ClassName("social-item")
+                        a{
+
+                            href="https://www.youtube.com/channel/UCt5suw7RY_YiFh1XHIW6vnQ/videos?view=0&sort=p"
+                            img{
+                                src="youtube.png"
+                                alt="Link"
+                            }}
+                    }
+
+
+                    li{ className = ClassName("social-item")
+                        a{
+
+                            href="https://yandex.ru/maps/org/3b_servis/1708253562/"
+                            img{
+                                src="yandex.png"
+                                alt="Link"
+                            }}
+                    }
+                    li{ className = ClassName("social-item")
+                        a{
+
+                            href="https://2gis.ru/kazan/firm/70000001022629043"
+                            img{
+                                src="2g.png"
+                                alt="Link"
+                            }}
+                    }
 
 
                 }

@@ -42,8 +42,10 @@ val Login = FC<LoginProps> { props ->
 //    var name1 by useState(props.name)
 //    var comment by useState(props.comment)
 
-    if (!good) {
-        div {
+
+        div {css{ paddingLeft = 40.px}
+            className=ClassName("lContainer")
+            if (!good) {
             div {
                 className = ClassName("Auth-form-container")
                 form {
@@ -105,14 +107,21 @@ val Login = FC<LoginProps> { props ->
             }
 
         }
-    }else{
+
+else{
 
 
 
 
-        AddZakazAdmin()
+        AddZakazAdmin{
+            fullName = ""
+            name = ""
+            phone = ""
+            comment = ""
 
-    }
+        }
+
+    }}
 }
 
 

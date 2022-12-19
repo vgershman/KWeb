@@ -70,9 +70,10 @@ val SearchZakazy = FC<SearchZakazyProps> { props ->
 
                             ReactHTML.li {
                                 ReactHTML.img {
-                                    src = "11.png"
+                                    src = "laptop.svg"
                                     alt = "ХЗХЗ"
-                                    className = ClassName("project__img")
+                                    className = ClassName("social-item")
+                                   // className = ClassName("project__img")
                                 }
 
                                 ReactHTML.table {

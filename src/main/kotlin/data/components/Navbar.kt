@@ -14,6 +14,7 @@ import react.dom.html.ReactHTML.nav
 import react.dom.html.ReactHTML.ul
 import react.*
 import react.dom.*
+import react.dom.html.ReactHTML.img
 import react.router.Route
 import react.router.Router
 import react.router.dom.*
@@ -73,10 +74,23 @@ val Navbar = FC<Props> {
                     }
                     li{
                         Link {
-                            to = "/login"
+                            to = "/contacts"
                             className = if (location.pathname.equals(to)) ClassName(activeLink) else ClassName(normalLink)
-                           // className = if (isActive) ClassName(activeLink) else ClassName(normalLink)
+                            // className = if (isActive) ClassName(activeLink) else ClassName(normalLink)
                             +"Контакты"
+                        }
+                        className = ClassName("nav-list__item")
+
+                    }
+                    li{className = ClassName("nav-list__item")
+                        Link {
+                            to = "/login"
+                            className = ClassName("social-item")
+                           // className = if (isActive) ClassName(activeLink) else ClassName(normalLink)
+                            img{
+                                src="login.png"
+                                alt="Link"
+                            }
                         }
                         className = ClassName("nav-list__item")
 

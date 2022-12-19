@@ -1,3 +1,4 @@
+import data.components.Slider
 import kotlinx.coroutines.MainScope
 import react.FC
 import react.Props
@@ -15,7 +16,9 @@ val Welcome = FC<WelcomeProps> { props ->
 
 
     div {
-        +"Welcome"
+        Slider{
+            index = 1
+        }
     }
 
 }

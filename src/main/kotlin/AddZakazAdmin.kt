@@ -20,13 +20,24 @@ import react.useState
 import csstype.px
 import RecapProps
 import Recap
+import data.ZakazItem
+import react.dom.html.ReactHTML
+import react.dom.html.ReactHTML.a
+import react.dom.html.ReactHTML.img
+import react.dom.html.ReactHTML.li
 
-class ZakazProps : Props {
-    var fullName: String = ""
-    var phone: String = ""
+external interface ZakazProps : Props {
+    var fullName: String
+    var phone: String
 
-    var name: String? = ""
-    var comment: String? = ""
+    var name: String
+    var serial: String
+    var price: String
+    var comment: String
+
+
+
+    var send : Int
 }
 
 
@@ -40,11 +51,12 @@ val AddZakazAdmin = FC<ZakazProps> { props ->
     var fullName by useState(props.fullName)
     var phone by useState(props.phone)
     var name1 by useState(props.name)
+    var serial by useState(props.serial)
+    var price by useState(props.price)
     var comment by useState(props.comment)
 
-
-    var tgSent: Boolean by useState(false)
-
+    var tgSent: Int by useState(props.send)
+    var tgSent1: Int by useState(51)
 
         ul { css{ paddingLeft = 40.px}
             h1 {
@@ -71,7 +83,7 @@ val AddZakazAdmin = FC<ZakazProps> { props ->
 
 
                         name = "phone"
-                        type = InputType.email
+                        type = InputType.tel
                         className = ClassName("form-control")
                         onChange = { event ->
                             phone = event.target.value
@@ -81,7 +93,7 @@ val AddZakazAdmin = FC<ZakazProps> { props ->
                     input {
 
                         name = "name"
-                        type = InputType.email
+                        type = InputType.text
                         className = ClassName("form-control")
                         onChange = { event ->
                             name1 = event.target.value
@@ -91,23 +103,68 @@ val AddZakazAdmin = FC<ZakazProps> { props ->
                     input {
 
                         name = "comment"
-                        type = InputType.email
+                        type = InputType.text
                         className = ClassName("form-control")
                         onChange = { event ->
                             comment = event.target.value
                         }
                         value = comment
                     }
-                    button {
-                        +"Отправить"
-                        className = ClassName("btn btn-primary")
-                        onClick = {
-                            mainScope.launch {
-                                Manager.createOrder(Zakaz(null, fullName, phone, null, null, null, null))
-                            }
+                    +"   Серийный номер:"
+                    input {
 
+
+                        name = "serial"
+                        type = InputType.text
+                        className = ClassName("form-control")
+                        onChange = { event ->
+                            serial = event.target.value
+                        }
+                    }
+                    +"   price:"
+                    input {
+
+
+                        name = "price"
+                        type = InputType.tel
+                        className = ClassName("form-control")
+                        onChange = { event ->
+                            price = event.target.value
+                        }
+                    }
+
+
+                        button {
+                            +"Отправить"
+                            className = ClassName("btn btn-primary")
+                            onClick = {
+                                mainScope.launch {
+                                    val elements = arrayListOf<ZakazItem>()
+                                    elements.add(ZakazItem(null, name1, serial, price.toIntOrNull(),comment))
+                                    tgSent1=Manager.createOrder(Zakaz(null, fullName, phone, null, null, null, null, elements))
+//props.send = tgSent1
+                                }
+
+                            }
                         }
 
+
+                    li{className = ClassName("social-item")
+                        a {
+
+                            href = "http://5.63.157.51/order/${tgSent1}/pdf/"
+                            img {
+                                src = "pdf.png"
+                                alt = "Link"
+                            }
+                        }
+                    }
+                        }
+
+
+
+
+                    }
 
 //                if(!tgSent) {
 //                    button {
@@ -142,9 +199,9 @@ val AddZakazAdmin = FC<ZakazProps> { props ->
                     }
 
                 }
-            }
-    }
-}
+
+
+
 
 //    <div className="App">
 //    <h1>Contact Us</h1>

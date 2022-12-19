@@ -1,6 +1,7 @@
 import csstype.ClassName
 import data.Manager
 import data.Zakaz
+import data.components.Contacts
 import data.components.Footer
 import data.components.Navbar
 import history.createHashHistory
@@ -41,11 +42,22 @@ div{
             }
             Route{
                 path="/zayavka"
-                element = AddZakazUser.create()
+                element = AddZakazUser.create{
+                    fullname = ""
+                    phone=""
+                    name=""
+                   comment=""
+                    code=""
+                   error=false
+                }
             }
             Route{
                 path="/login"
                 element = Login.create()
+            }
+            Route{
+                path="/contacts"
+                element = Contacts.create()
             }
 
         }

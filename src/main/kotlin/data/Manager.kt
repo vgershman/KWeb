@@ -21,13 +21,13 @@ object Manager {
 
             val response = window
                 .fetch(
-                    "http://5.63.157.51/orders/",
+                    "http://5.63.157.51/ordersweb/",
                     RequestInit(method = "put", body = JSON.stringify(zakaz), headers = headers)
                 )
                 .await()
                 .text()
                 .await()
-            return@async 1//Json.decodeFromString<List<Zakaz>>(response)
+            return@async response.toIntOrNull()?:0//Json.decodeFromString<List<Zakaz>>(response)
         }.await()
     }
 
