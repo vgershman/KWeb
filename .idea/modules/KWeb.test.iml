@@ -5,6 +5,7 @@
       <configuration version="5" platform="JavaScript " allPlatforms="JS []" useProjectSettings="false" isTestModule="true" externalProjectId="KWeb">
         <newMppModelJpsModuleKind>COMPILATION_AND_SOURCE_SET_HOLDER</newMppModelJpsModuleKind>
         <externalSystemTestTasks>
+          <externalSystemTestTask>nodeTest|:|js</externalSystemTestTask>
           <externalSystemTestTask>browserTest|:|js</externalSystemTestTask>
         </externalSystemTestTasks>
         <compilerSettings />
